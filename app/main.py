@@ -9,7 +9,7 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
-# POST /user - регистрация
+
 @app.post("/user", response_model=UserOut)
 def register(user_create: UserCreate, db: Session = Depends(get_db)):
     existing_user = db.query(User).filter(User.email == user_create.email).first()
